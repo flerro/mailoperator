@@ -1,4 +1,10 @@
 credentials.json
 operator.log
 token.pickle
-.idea/**
+venv/**
+/.idea/
+/account/
+/dist/
+/build/
+
+*.pyc
