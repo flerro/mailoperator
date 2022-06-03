@@ -7,7 +7,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-from gmail_api_utils import extract_message_metadata, message_info, clean
+from .gmail_api_utils import extract_message_metadata, message_info, safe_file_name
 
 
 SCOPES = ['https://mail.google.com/']
@@ -47,6 +47,14 @@ def gmail_client():
 
 
 def preview_metadata(gmail, message):
+    """
+    Log in output GMail message metadata, including: 
+    subject, sender, received date, size.
+
+
+    Args:
+        gmail: a GMail API client
+    """    
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
     headers = extract_message_metadata(msg)
     log.info("Match... %s", message_info(headers))
@@ -115,7 +123,7 @@ def dump_message(gmail, message, base_path='account'):
     path = os.path.join(base_path, 'inbox', recv_date)
     if not os.path.isdir(path):
         os.makedirs(path)
-    out_file = os.path.join(path, '%s.eml' % clean(headers['subject']))
+    out_file = os.path.join(path, '%s.eml' % safe_file_name(headers['subject']))
     with open(out_file, 'wb') as f:
         f.write(base64.urlsafe_b64decode(raw + "========"))
 

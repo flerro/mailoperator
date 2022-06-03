@@ -1,4 +1,4 @@
-from gmail_api import gmail_client, search_messages, dump_message, delete_message
+from .gmail_api import gmail_client, search_messages, dump_message, delete_message
 
 
 def archive_messages(search_string, max_pages):
