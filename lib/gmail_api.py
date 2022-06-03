@@ -49,15 +49,15 @@ def gmail_client():
 def preview_metadata(gmail, message):
     """
     Log in output GMail message metadata, including: 
-    subject, sender, received date, size.
+    subject, sender, received date, size, labels.
 
 
     Args:
         gmail: a GMail API client
     """    
-    msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
+    msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()    
     headers = extract_message_metadata(msg)
-    log.info("Match... %s", message_info(headers))
+    log.info("Match... %s, Labels: %s", message_info(headers), msg['labelIds'])
 
 
 def delete_message(gmail, message):

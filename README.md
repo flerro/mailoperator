@@ -5,35 +5,41 @@ Perform operations on Gmail messages matching a [search expression](https://supp
 ## Usage
 
 ```bash
-usage: operator.py [-h] [-n MAX] [-a] [-d] search_expr [search_expr ...]
+usage: operator.py [-h] [-n MAX_MESSAGES] [--archive] [--delete] search_expr
 
-Operate on Gmail messages matching a search expression
+Perform operations on Gmail messages matching a search expression
 
 positional arguments:
-  search_expr        Message search expression
+  search_expr           message search expression
 
 options:
-  -h, --help         show this help message and exit
-  -n MAX, --max MAX  limit max number of messages to process
-  -a, --archive      archive matching messages to local disk
-  -d, --delete       permanently delete matching messages
+  -h, --help            show this help message and exit
+  -n MAX_MESSAGES, --max-messages MAX_MESSAGES
+                        limit max number of messages to process
+  --archive             archive matching messages to local disk
+  --delete              permanently delete matching messages
 ```
 
 Examples:
 
-- List all message containing the 'unsubscribe' keyword, received before the given date
+- List latest 10 messages containing the 'unsubscribe' keyword
     ```
-    $ python operator.py 'unsubscribe' 'older:2022/05/10'
-    ```
-
-- Delete all message received from the given sender
-    ```
-    $ python operator.py -d 'from:test@test.com'
+    $ python operator.py 'unsubscribe older:2022/05/10'
     ```
 
-- Save locally all message containing the 'unsubscribe' keyword and received before the given date
+- Delete latest 10 messages received from the given sender
     ```
-    $ python operator.py -d 'unsubscribe' 'older:2022/05/10'
+    $ python operator.py --delete 'from:test@test.com'
+    ```
+
+- Delete latest 100 messages categorized in the "Promotions" tab
+    ```
+    $ python operator.py --delete 'label:promotions' -n 100
+    ```
+
+- Save locally latest 200 messages matching the given search expression (message containing 'unsubscribe' keyword but not 'jugmilano' and received before '2022-05-10')
+    ```
+    $ python operator.py --archive 'unsubscribe -jugmilano older:2022/05/10' -n 200
     ```
 
 Standard [GMail search expression](https://support.google.com/mail/answer/7190?hl=en) syntax is supported.
