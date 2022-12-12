@@ -12,7 +12,7 @@ Access to Gmail inbox is required for the software to work, but email messages a
 
 ## Changes to this Privacy Policy
 
-This Privacy Policy may change from time to time, the latest version of the document is [available here](https://raw.githubusercontent.com/flerro/gmail-operator/master/privacy_policy.md).
+This Privacy Policy may change from time to time, the latest version of the document is [available here](https://github.com/flerro/gmail-operator/blob/master/privacy_policy.md).
 
 ## Contact Us
 

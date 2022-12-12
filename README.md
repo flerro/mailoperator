@@ -59,3 +59,4 @@ More [info here](https://developers.google.com/workspace/guides/create-credentia
 
 - API reference: https://developers.google.com/gmail/api
 - Search syntax: https://support.google.com/mail/answer/7190?hl=en
+- [Privacy policy](https://github.com/flerro/gmail-operator/blob/master/privacy_policy.md)
