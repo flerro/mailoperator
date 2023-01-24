@@ -9,8 +9,8 @@ from google.auth.transport.requests import Request
 
 from .gmail_api_utils import extract_message_metadata, message_info, safe_file_name
 
-
 SCOPES = ['https://mail.google.com/']
+CLIENT_SECRET = 'client_secret.json'
 
 log = logging.getLogger()
 
@@ -39,7 +39,7 @@ def gmail_client():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET, SCOPES)
             creds = flow.run_local_server(port=0)
         with open(token_pickle, "wb") as token:
             pickle.dump(creds, token)

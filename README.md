@@ -51,7 +51,7 @@ To use the Gmail API, we need an auth token:
 1. Go to the [GCP Project Dashboard](https://console.developers.google.com/apis/dashboard)
 2. Click on `Enable API button` and search for `GMail API`
 3. Select`Credential` section on the left panel, click con `Create Credentials > OAuth Client ID`
-4. Rename the downloaded JSON as `credentials.json` and move it to the `gmail-operator` directory 
+4. Rename the downloaded JSON as `client_secret.json` and move it to the `gmail-operator` directory 
 
 More [info here](https://developers.google.com/workspace/guides/create-credentials)
 

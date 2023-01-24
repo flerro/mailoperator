@@ -3,7 +3,7 @@
 import argparse
 import logging
 
-from lib import delete_messages, download_messages, preview_messages
+from gmailoperator import delete_messages, download_messages, preview_messages
 
 
 def parse_options():
@@ -22,7 +22,7 @@ def parse_options():
     return args
 
 
-if __name__ == "__main__":
+def run():
     log = logging.getLogger()
     console = logging.StreamHandler()
     console.setFormatter(logging.Formatter('%(asctime)s\t -- %(message)s'))
@@ -40,3 +40,7 @@ if __name__ == "__main__":
         delete_messages(search_expr, opts.max_messages)
     else:
         preview_messages(search_expr, opts.max_messages)
+
+
+if __name__ == "__main__":
+    run()
