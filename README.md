@@ -16,8 +16,8 @@ options:
   -h, --help            show this help message and exit
   -n MAX_MESSAGES, --max-messages MAX_MESSAGES
                         limit max number of messages to process
-  --archive             archive matching messages to local disk
-  --delete              permanently delete matching messages
+  --cp                  archive matching messages to local disk
+  --rm                  permanently delete matching messages
 ```
 
 Examples:
@@ -29,17 +29,17 @@ Examples:
 
 - Delete latest 10 messages received from the given sender
     ```
-    $ python operator.py --delete 'from:test@test.com'
+    $ python operator.py --rm 'from:test@test.com'
     ```
 
 - Delete latest 100 messages categorized in the "Promotions" tab
     ```
-    $ python operator.py --delete 'label:promotions' -n 100
+    $ python operator.py --rm 'label:promotions' -n 100
     ```
 
 - Save locally latest 200 messages matching the given search expression (message containing 'unsubscribe' keyword but not 'jugmilano' and received before '2022-05-10')
     ```
-    $ python operator.py --archive 'unsubscribe -jugmilano older:2022/05/10' -n 200
+    $ python operator.py --cp 'unsubscribe -jugmilano older:2022/05/10' -n 200
     ```
 
 Standard [GMail search expression](https://support.google.com/mail/answer/7190?hl=en) syntax is supported.

@@ -1,16 +1,17 @@
+#!/usr/bin/env python3
 
 import argparse
 import logging
 
-from lib import delete_messages, archive_messages, preview_messages
+from lib import delete_messages, download_messages, preview_messages
 
 
 def parse_options():
     parser = argparse.ArgumentParser(description="Perform operations on Gmail messages matching a search expression")
     parser.add_argument('search_expr', type=str, help='message search expression')
     parser.add_argument('-n', '--max-messages', type=int, help='limit max number of messages to process', default=10)
-    parser.add_argument('--archive', help='archive matching messages to local disk', action='store_true')
-    parser.add_argument('--delete', help='permanently delete matching messages', action='store_true')
+    parser.add_argument('--cp', help='download matching messages to local disk', action='store_true')
+    parser.add_argument('--rm', help='permanently delete matching messages', action='store_true')
 
     args = parser.parse_args()
 
@@ -33,9 +34,9 @@ if __name__ == "__main__":
     log.info("Running operator... %s", opts)
     search_expr = opts.search_expr
 
-    if opts.delete:
+    if opts.cp:
+        download_messages(search_expr, opts.max_messages)
+    elif opts.rm:
         delete_messages(search_expr, opts.max_messages)
-    elif opts.archive:
-        archive_messages(search_expr, opts.max_messages)
     else:
         preview_messages(search_expr, opts.max_messages)

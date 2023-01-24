@@ -103,7 +103,7 @@ def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10
                 msg_count += 1
 
 
-def dump_message(gmail, message, base_path='account'):
+def download_message(gmail, message, base_path='account'):
     """Store GMail message as an eml file
     
     Args:
