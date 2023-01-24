@@ -23,24 +23,28 @@ def parse_options():
 
 
 def run():
-    log = logging.getLogger()
-    console = logging.StreamHandler()
-    console.setFormatter(logging.Formatter('%(asctime)s\t -- %(message)s'))
-    log.setLevel(logging.INFO)
-    log.addHandler(console)
+    try:
+        log = logging.getLogger()
+        console = logging.StreamHandler()
+        console.setFormatter(logging.Formatter('%(asctime)s\t -- %(message)s'))
+        log.setLevel(logging.INFO)
+        log.addHandler(console)
 
-    opts = parse_options()
+        opts = parse_options()
 
-    log.info("Running operator... %s", opts)
-    search_expr = opts.search_expr
+        log.info("Running operator... %s", opts)
+        search_expr = opts.search_expr
 
-    if opts.cp:
-        download_messages(search_expr, opts.max_messages)
-    elif opts.rm:
-        delete_messages(search_expr, opts.max_messages)
-    else:
-        preview_messages(search_expr, opts.max_messages)
-
+        if opts.cp:
+            download_messages(search_expr, opts.max_messages)
+        elif opts.rm:
+            delete_messages(search_expr, opts.max_messages)
+        else:
+            preview_messages(search_expr, opts.max_messages)
+    except KeyboardInterrupt:
+        log.warn("Bye!")
+    except Exception as e:
+        log.warn("Sorry, something did not work as expected... ", str(e))
 
 if __name__ == "__main__":
     run()
