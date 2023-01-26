@@ -1,11 +1,17 @@
 # gmail-operator
 
-Perform operations on Gmail messages matching a [search expression](https://support.google.com/mail/answer/7190?hl=en).
+Gmail Operator is a CLI utility to manage your Gmail inbox. Currently supported operations include listing, removing and downloading messages. Target messages are selecte via a [search expression](https://support.google.com/mail/answer/7190?hl=en). 
+
+Gmail Operator is very [privacy friendly](https://github.com/flerro/gmail-operator/blob/master/PRIVACY_POLICY.md), its code is publicly available on [Github](https://github.com/flerro/gmail-operator).
+
+
+## Install
+
 
 ## Usage
 
 ```bash
-usage: operator.py [-h] [-n MAX_MESSAGES] [--archive] [--delete] search_expr
+usage: gop [-h] [-n MAX_MESSAGES] [--archive] [--delete] search_expr
 
 Perform operations on Gmail messages matching a search expression
 
@@ -16,7 +22,7 @@ options:
   -h, --help            show this help message and exit
   -n MAX_MESSAGES, --max-messages MAX_MESSAGES
                         limit max number of messages to process
-  --cp                  archive matching messages to local disk
+  --cp                  download matching messages
   --rm                  permanently delete matching messages
 ```
 

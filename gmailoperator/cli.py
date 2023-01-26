@@ -9,8 +9,8 @@ from gmailoperator import delete_messages, download_messages, preview_messages
 def parse_options():
     parser = argparse.ArgumentParser(description="Perform operations on Gmail messages matching a search expression")
     parser.add_argument('search_expr', type=str, help='message search expression')
-    parser.add_argument('-n', '--max-messages', type=int, help='limit max number of messages to process', default=10)
-    parser.add_argument('--cp', help='download matching messages to local disk', action='store_true')
+    parser.add_argument('-n', '--max-messages', type=int, help='max number messages to return as search results', default=10)
+    parser.add_argument('--cp', help='download matching messages', action='store_true')
     parser.add_argument('--rm', help='permanently delete matching messages', action='store_true')
 
     args = parser.parse_args()
