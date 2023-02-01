@@ -75,7 +75,7 @@ Operations are executed on messages in reverse temporal order (latest messages f
   
 Please note that the `mop` command is available only if the package is installed globally, otherwise start **mail-operator** via `./operator.py` script.
 
-## Access to the Gmail API 
+## Accessing the Gmail API 
 
 Access to the Gmail API is possible via the Google Cloud Console. You must setup both
  [API credentials](https://console.cloud.google.com/apis/credentials) and [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
