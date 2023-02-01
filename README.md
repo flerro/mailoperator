@@ -1,8 +1,8 @@
-# gmail-operator
+# mailoperator
 
-Gmail Operator is a CLI utility to manage your Gmail inbox. Currently supported operations include listing, removing and downloading messages. Target messages are selecte via a [search expression](https://support.google.com/mail/answer/7190?hl=en). 
+Mailoperator is a CLI utility to manage your Gmail inbox. Currently supported operations include listing, removing and downloading messages. Target messages are selecte via a [search expression](https://support.google.com/mail/answer/7190?hl=en). 
 
-Gmail Operator is very [privacy friendly](https://github.com/flerro/gmail-operator/blob/master/PRIVACY_POLICY.md), its code is publicly available on [Github](https://github.com/flerro/gmail-operator).
+Mailoperator is very [privacy friendly](https://github.com/flerro/gmail-operator/blob/master/PRIVACY_POLICY.md), its code is publicly available on [Github](https://github.com/flerro/gmail-operator).
 
 
 ## Install
@@ -57,7 +57,7 @@ To use the Gmail API, we need an auth token:
 1. Go to the [GCP Project Dashboard](https://console.developers.google.com/apis/dashboard)
 2. Click on `Enable API button` and search for `GMail API`
 3. Select`Credential` section on the left panel, click con `Create Credentials > OAuth Client ID`
-4. Rename the downloaded JSON as `client_secret.json` and move it to the `gmail-operator` directory 
+4. Rename the downloaded JSON as `client_secret.json` and move it to the `mailoperator` directory 
 
 More [info here](https://developers.google.com/workspace/guides/create-credentials)
 
