@@ -75,19 +75,35 @@ Operations are executed on messages in reverse temporal order (latest messages f
   
 Please note that the `mop` command is available only if the package is installed globally, otherwise start **mail-operator** via `./operator.py` script.
 
-## Get Google API client secret
+## Access the Gmail API 
 
-To use the Gmail API, we need allow oauth authentication: 
+Access to GMail API is possible via the Google Cloud Console. You must setup both
+ [API credentials](https://console.cloud.google.com/apis/credentials) and [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
+
+### Client secret
+
+Authentication is granted via [OAuth client id](https://developers.google.com/workspace/guides/create-credentials):
 
 1. Go to the [GCP Project Dashboard](https://console.developers.google.com/apis/dashboard)
 2. Click on `Enable API button` and search for `GMail API`
 3. Select`Credential` section on the left panel, click con `Create Credentials > OAuth Client ID`
 4. Rename the downloaded JSON as `client_secret.json` and move it to the `mailoperator` directory 
 
-More [info here](https://developers.google.com/workspace/guides/create-credentials)
+### OAuth consent screen
+
+The following scopes are required for the software to work properly.
+
+```
+Read, compose, send, and permanently delete all your email from Gmail
+```
+
+The publishing status of the application can be "Testing", don't forget to add you as a test user.
+
+Anyway, an explicit grant to access sensitive data is displayed on first run.
+
 
 ## Links
 
 - API reference: https://developers.google.com/gmail/api
 - Search syntax: https://support.google.com/mail/answer/7190?hl=en
-- [Privacy policy](https://github.com/flerro/gmail-operator/blob/master/privacy_policy.md)
+- [Privacy policy](https://github.com/flerro/mailoperator/blob/master/privacy_policy.md)
