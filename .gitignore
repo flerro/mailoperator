@@ -1,5 +1,5 @@
 operator.log
-token.pickle
+*.pickle
 venv/**
 /.idea/
 /account/
