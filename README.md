@@ -73,7 +73,7 @@ Operations are executed on messages in reverse temporal order (latest messages f
     mop --cp 'unsubscribe -jugmilano older:2022/05/10' -n 200
     ```
   
-Please note that the `mop` command is available only if the package is installed globally, otherwise use `./operator.py` script to start **mail-operator**.
+Please note that the `mop` command is available only if the package is installed globally, otherwise start **mail-operator** via `./operator.py` script.
 
 ## Get Google API client secret
 
