@@ -74,7 +74,7 @@ def delete_message(gmail, message, options=None):
     gmail.users().messages().delete(userId='me', id=message['id']).execute()
 
 
-def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10, options={}):
+def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10, options=None):
     """
     Search for GMail messages mathing the given search expression, then perform 
     an operation on eacn message. Default operation is `preview_metadata`.
