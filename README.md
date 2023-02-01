@@ -4,7 +4,7 @@
 
 **mail-operator** is very [privacy friendly](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md), the code is publicly available on [Github](https://github.com/flerro/mailoperator).
 
-## Install
+## Installation
 
 1. Download package locally
 
@@ -75,12 +75,12 @@ Operations are executed on messages in reverse temporal order (latest messages f
   
 Please note that the `mop` command is available only if the package is installed globally, otherwise start **mail-operator** via `./operator.py` script.
 
-## Access the Gmail API 
+## Access to the Gmail API 
 
-Access to GMail API is possible via the Google Cloud Console. You must setup both
+Access to the Gmail API is possible via the Google Cloud Console. You must setup both
  [API credentials](https://console.cloud.google.com/apis/credentials) and [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 
-### Client secret
+### API credentials (client secret)
 
 Authentication is granted via [OAuth client id](https://developers.google.com/workspace/guides/create-credentials):
 
