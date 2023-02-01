@@ -106,4 +106,4 @@ Anyway, an explicit grant to access sensitive data is displayed on first run.
 
 - API reference: https://developers.google.com/gmail/api
 - Search syntax: https://support.google.com/mail/answer/7190?hl=en
-- [Privacy policy](https://github.com/flerro/mailoperator/blob/master/privacy_policy.md)
+- [Privacy policy](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md)
