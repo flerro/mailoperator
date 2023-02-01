@@ -7,7 +7,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-from .gmail_api_utils import extract_message_metadata, message_info, safe_file_name
+import gmail_api_utils as utils
 
 SCOPES = ['https://mail.google.com/']
 CLIENT_SECRET = 'client_secret.json'
@@ -56,7 +56,7 @@ def preview_metadata(gmail, message):
         gmail: a GMail API client
     """    
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()    
-    headers = extract_message_metadata(msg)
+    headers = utils.extract_message_metadata(msg)
     log.info("Match... %s, Labels: %s", message_info(headers), msg['labelIds'])
 
 
@@ -68,8 +68,8 @@ def delete_message(gmail, message):
         message: a GMail message
     """
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
-    headers = extract_message_metadata(msg)
-    log.info("Deleting... %s", message_info(headers))
+    headers = utils.extract_message_metadata(msg)
+    log.info("Deleting... %s", utils.message_info(headers))
     gmail.users().messages().delete(userId='me', id=message['id']).execute()
 
 
@@ -112,9 +112,9 @@ def download_message(gmail, message, base_path='account'):
         base_path (str, optional): base ouput path relative to current directory. Defaults to 'account'.
     """
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
-    headers = extract_message_metadata(msg)
+    headers = utils.extract_message_metadata(msg)
 
-    log.info("Archiving... %s", message_info(headers))
+    log.info("Archiving... %s", utils.message_info(headers))
 
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='raw').execute()
     raw = msg['raw']
@@ -123,7 +123,7 @@ def download_message(gmail, message, base_path='account'):
     path = os.path.join(base_path, 'inbox', recv_date)
     if not os.path.isdir(path):
         os.makedirs(path)
-    out_file = os.path.join(path, '%s.eml' % safe_file_name(headers['subject']))
+    out_file = os.path.join(path, '%s.eml' % utils.safe_file_name(headers['subject']))
     with open(out_file, 'wb') as f:
         f.write(base64.urlsafe_b64decode(raw + "========"))
 

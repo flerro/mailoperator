@@ -1,6 +1,7 @@
 from datetime import datetime
 import email
 
+
 def extract_message_metadata(msg):
     payload = msg['payload']
     headers = payload.get("headers")
