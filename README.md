@@ -3,8 +3,8 @@
 **mail-operator** is a very [privacy friendly](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md) 
 CLI utility to manage your Gmail inbox.
 
-You can list, download and permanently remove e-mails. Target messages are selected via a [search expression](https://support.google.com/mail/answer/7190?hl=en).
-Operations are executed on messages considering latest received messages first.
+You can list, download and permanently remove e-mails. Operations are executed on messages considering latest received messages first. Target messages are selected via a [search expression](https://support.google.com/mail/answer/7190?hl=en).
+
 
 [![asciicast](https://asciinema.org/a/6H2YbEIqx4muG3OhM7F8jSKyZ.png)](https://asciinema.org/a/6H2YbEIqx4muG3OhM7F8jSKyZ)
 
