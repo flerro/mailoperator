@@ -75,7 +75,7 @@ Please note that the `mop` command is available only if the package is installed
 
 ## Accessing the Gmail API 
 
-Access to the Gmail API is possible via the Google Cloud Console. The process is not super straightforward, unfortunately. You must both setup
+Access to the Gmail API is possible via the Google Cloud Console. Unfortunately, the process is not really straightforward, you must both setup
  [API credentials](https://console.cloud.google.com/apis/credentials) and [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 
 ### API credentials (client secret)
