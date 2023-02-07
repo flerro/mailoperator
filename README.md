@@ -1,7 +1,7 @@
 # mail-operator
 
 **mail-operator** is a very [privacy friendly](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md) 
-CLI utility to manage your Gmail inbox. 
+CLI utility to manage your Gmail inbox.
 
 You can list, download and permanently remove e-mails. Target messages are selected via a [search expression](https://support.google.com/mail/answer/7190?hl=en).
 Operations are executed on messages considering latest received messages first.
@@ -11,7 +11,7 @@ Operations are executed on messages considering latest received messages first.
 
 ## Installation
 
-Download package locally and install using `pip`.
+You can download the python package locally and install it using `pip`.
 
 ```
 git clone https://github.com/flerro/mailoperator
@@ -19,7 +19,7 @@ cd mailoperator
 pip3 install .
 ```
    
-Global installation is convenient but not mandatory, **mailoperator** can be also used via a [virtualenv](https://realpython.com/python-virtual-environments-a-primer/) ;)
+Global installation is convenient but not mandatory, **mailoperator** can be also used via a [virtualenv](https://realpython.com/python-virtual-environments-a-primer/) 😉
 
 ## Usage
 
@@ -95,9 +95,9 @@ The following scopes are required for the software to work properly.
 Read, compose, send, and permanently delete all your email from Gmail
 ```
 
-The publishing status of the application can be "Testing", don't forget to add you as a test user.
+The publishing status of the application can be "Testing", but don't forget to add you as a test user.
 
-Anyway, an explicit grant to access sensitive data is displayed on first run.
+Please note that an explicit grant to access sensitive data is displayed on first run.
 
 
 ## Links
