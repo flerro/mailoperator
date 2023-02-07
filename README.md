@@ -102,6 +102,6 @@ Please note that an explicit grant to access sensitive data is displayed on firs
 
 ## Links
 
-- API reference: https://developers.google.com/gmail/api
-- Search syntax: https://support.google.com/mail/answer/7190?hl=en
-- [Privacy policy](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md)
+- [Gmail API reference](https://developers.google.com/gmail/api)
+- [Gmail search syntax](https://support.google.com/mail/answer/7190?hl=en)
+- [Privacy policy](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md) and [Licence](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md)
