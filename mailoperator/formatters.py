@@ -1,6 +1,8 @@
 from datetime import datetime
 import email
 
+MESSAGE_INFO_FMT = '%-16s | %8s | %-50s | %s'
+
 
 def extract_message_metadata(msg):
     payload = msg['payload']
@@ -9,14 +11,24 @@ def extract_message_metadata(msg):
     try:
         h['date'] = email.utils.parsedate_to_datetime(h['date'])
     except ValueError:
-        h['date'] = datetime(2000, 1, 1) # Placeholder date, GMail service launched on 2004
+        # use Gmail service launch date as placeholder
+        h['date'] = datetime(2004, 4, 1)
     h['size'] = size_format(msg['sizeEstimate'])
     return h
 
 
 def message_info(headers):
-    dt = headers['date'].strftime('%Y-%m-%d %H:%M:%S')
-    return 'At: %s, Size: %s, From: %s, Subject: %s' % (dt, headers['size'], headers['from'], headers['subject'])
+    dt = headers['date'].strftime('%Y-%m-%d %H:%M')
+    return MESSAGE_INFO_FMT % (dt, headers['size'], headers['subject'][:50], headers['from'])
+
+
+def message_info_metadata(msg):
+    headers = extract_message_metadata(msg)
+    return message_info(headers)
+
+
+def message_info_title():
+    return MESSAGE_INFO_FMT % ('DATE', 'SIZE', 'SUBJECT', 'FROM')
 
 
 def size_format(b, factor=1024, suffix="B"):

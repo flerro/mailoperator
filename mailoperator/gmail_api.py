@@ -7,7 +7,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-import gmail_api_utils as utils
+import formatters as fmt
 
 SCOPES = ['https://mail.google.com/']
 CLIENT_SECRET = 'client_secret.json'
@@ -29,7 +29,7 @@ def gmail_client(account_name='default'):
     
     """
     creds = None
-    token_pickle = account_name + '.pickle'
+    token_pickle = account_name + '_secret.pickle'
     if os.path.exists(token_pickle):
         with open(token_pickle, "rb") as token:
             creds = pickle.load(token)
@@ -50,14 +50,12 @@ def preview_metadata(gmail, message, options):
     Log in output GMail message metadata, including: 
     subject, sender, received date, size, labels.
 
-
     Args:
         gmail: a GMail API client
         :param options: needed for method signature compatibility, but not used
     """
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()    
-    headers = utils.extract_message_metadata(msg)
-    log.info("Match... %s, Labels: %s", utils.message_info(headers), msg['labelIds'])
+    print(fmt.message_info_metadata(msg), ' ', msg['labelIds'])
 
 
 def delete_message(gmail, message, options=None):
@@ -69,15 +67,15 @@ def delete_message(gmail, message, options=None):
         :param options: needed for method signature compatibility, but not used
     """
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
-    headers = utils.extract_message_metadata(msg)
-    log.info("Deleting... %s", utils.message_info(headers))
+    headers = fmt.extract_message_metadata(msg)
+    print(fmt.message_info(headers))
     gmail.users().messages().delete(userId='me', id=message['id']).execute()
 
 
 def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10, options=None):
     """
     Search for GMail messages mathing the given search expression, then perform 
-    an operation on eacn message. Default operation is `preview_metadata`.
+    an operation on each message. Default operation is `preview_metadata`.
 
     Args:
         gmail: a GMail API client
@@ -90,6 +88,7 @@ def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10
     result = gmail.users().messages().list(userId='me', q=search_expr).execute()
 
     if 'messages' in result:
+        print(fmt.message_info_title())
         for message in result['messages']:
             if msg_count >= max_messages:
                 return
@@ -98,7 +97,7 @@ def search_messages(gmail, search_expr, action=preview_metadata, max_messages=10
 
     while 'nextPageToken' in result:
         page_token = result['nextPageToken']
-        result = gmail.users().messages().list(userId='me',q=search_expr, pageToken=page_token).execute()
+        result = gmail.users().messages().list(userId='me', q=search_expr, pageToken=page_token).execute()
         if 'messages' in result and msg_count < max_messages:
             for message in result['messages']:
                 if msg_count >= max_messages:
@@ -113,23 +112,23 @@ def download_message(gmail, message, options):
     Args:
         gmail: a GMail API client
         message: a GMail message
-        options (str, optional): should include information about account
+        options: should include information about account
     """
-    msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
-    headers = utils.extract_message_metadata(msg)
-
-    log.info("Dloading... %s", utils.message_info(headers))
+    msg_with_headers = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()
+    headers = fmt.extract_message_metadata(msg_with_headers)
+    print(fmt.message_info(headers))
 
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='raw').execute()
     raw = msg['raw']
 
-    base_path = options['account'] if 'account' in options else 'account'
+    prefix = options['account'] if 'account' in options else 'default'
+    base_path = '%s_account' % prefix
     recv_date = headers['date'].strftime('%Y-%m-%d').replace('-', os.path.sep)
     path = os.path.join(base_path, msg['labelIds'][-1], recv_date)
 
     if not os.path.isdir(path):
         os.makedirs(path)
-    out_file = os.path.join(path, '%s.eml' % utils.safe_file_name(headers['subject']))
+    out_file = os.path.join(path, '%s.eml' % fmt.safe_file_name(headers['subject']))
     with open(out_file, 'wb') as f:
         f.write(base64.urlsafe_b64decode(raw + "========"))
 

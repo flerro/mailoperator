@@ -6,20 +6,15 @@
 
 ## Installation
 
-1. Download package locally
+Download package locally and install using `pip`.
 
-      ```
-      git clone https://github.com/flerro/mailoperator
-      ```
-
-2. Install globally using `pip`
-
-      ```
-   cd mailoperator 
-   pip3 install .
-      ```
+```
+git clone https://github.com/flerro/mailoperator
+cd mailoperator 
+pip3 install .
+```
    
-BTW Global installation is not mandatory, you can use the tool from a [virtualenv](https://realpython.com/python-virtual-environments-a-primer/) ;)
+Global installation is convenient but not mandatory, **mailoperator** can be also used via a [virtualenv](https://realpython.com/python-virtual-environments-a-primer/) ;)
 
 ## Usage
 
@@ -29,19 +24,19 @@ usage: mop [-h] [-u ACCOUNT] [-n MAX_MESSAGES] [--cp] [--rm] search_expr
 Perform operations on Gmail messages matching a search expression
 
 positional arguments:
-  search_expr           message search expression
+  search_expr           [Gmail search expression](https://support.google.com/mail/answer/7190?hl=en)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -u ACCOUNT, --account ACCOUNT
-                        use non default credentials file
+                        use non default authentication file
   -n MAX_MESSAGES, --max-messages MAX_MESSAGES
                         max number of messages to process (default: 10)
-  --cp                  download matching messages
-  --rm                  permanently delete matching messages
+  --dload               download matching messages
+  --remove              permanently delete matching messages
 ```
 
-The standard [GMail search expression](https://support.google.com/mail/answer/7190?hl=en) syntax is supported for `search_expr`.
+The standard [Gmail search expression](https://support.google.com/mail/answer/7190?hl=en) syntax is supported for `search_expr`.
 
 Operations are executed on messages in reverse temporal order (latest messages first), 10 messages are processed by default.
 
@@ -77,7 +72,7 @@ Please note that the `mop` command is available only if the package is installed
 
 ## Accessing the Gmail API 
 
-Access to the Gmail API is possible via the Google Cloud Console. You must setup both
+Access to the Gmail API is possible via the Google Cloud Console. The process is not super straightforward, unfortunately. You must both setup
  [API credentials](https://console.cloud.google.com/apis/credentials) and [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 
 ### API credentials (client secret)
