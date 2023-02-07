@@ -1,8 +1,11 @@
 # mail-operator
 
-**mail-operator** is a CLI utility to manage your Gmail inbox. Currently supported operations include listing, downloading and permanently removing e-mails. Messages to be processed are selected via a [search expression](https://support.google.com/mail/answer/7190?hl=en). 
+**mail-operator** is an [open source](https://github.com/flerro/mailoperator)
+and very [privacy friendly](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md) 
+CLI utility to manage your Gmail inbox. Currently supported operations include listing, downloading and permanently removing e-mails. Messages to be processed are selected via a [search expression](https://support.google.com/mail/answer/7190?hl=en). 
 
-**mail-operator** is very [privacy friendly](https://github.com/flerro/mailoperator/blob/master/PRIVACY_POLICY.md), the code is publicly available on [Github](https://github.com/flerro/mailoperator).
+[![asciicast](https://asciinema.org/a/6H2YbEIqx4muG3OhM7F8jSKyZ.png)](https://asciinema.org/a/6H2YbEIqx4muG3OhM7F8jSKyZ)
+
 
 ## Installation
 

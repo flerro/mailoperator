@@ -55,7 +55,8 @@ def preview_metadata(gmail, message, options):
         :param options: needed for method signature compatibility, but not used
     """
     msg = gmail.users().messages().get(userId='me', id=message['id'], format='metadata').execute()    
-    print(fmt.message_info_metadata(msg), ' ', msg['labelIds'])
+    # print(fmt.message_info_metadata(msg), msg['labelIds'])
+    print(fmt.message_info_metadata(msg))
 
 
 def delete_message(gmail, message, options=None):
